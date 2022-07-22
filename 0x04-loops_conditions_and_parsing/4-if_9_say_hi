@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# display Best School 10 times
-
+# display Best School 10 times with Hi
 COUNT=1
 while [ $COUNT -le 10 ]
 do
@@ -9,5 +8,5 @@ do
 	then
 		echo "Hi"
 	fi
-	COUNT=$((COUNT+1))
+	((COUNT++))
 done
