@@ -5,5 +5,5 @@ COUNT=0
 while [ $COUNT -lt 10 ]
 do
 	echo "Best School"
-	COUNT=$[$COUNT+1]
+	COUNT=$((COUNT+1))
 done
