@@ -2,7 +2,5 @@
 # Script that installs Nginx server and add a custom header
 apt-get -y update
 apt-get -y install nginx
-echo "Hello World!" > /var/www/html/index.nginx-debian.html
-echo "Ceci n'est pas une page" > /usr/share/nginx/html/custom_404.html
 sed -i "s/server_name _;/server_name _;\n\tadd_header X-Served-By $hostname;/" /etc/nginx/sites-available/default
 service nginx restart
