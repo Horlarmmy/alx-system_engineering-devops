@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-""" Exports the data to CSV"""
-import csv
+""" Exports the data to JSON"""
+import json
 import requests
 import sys
 if __name__ == '__main__':
@@ -10,8 +10,9 @@ if __name__ == '__main__':
     username = user.get("username")
     todos = requests.get(url + 'todos', params={"userId": sys.argv[1]}).json()
 
-    with open("{}.csv".format(user_id), 'w', newline="") as f:
-        writer = csv.writer(f, quoting=csv.QUOTE_ALL)
-        for task in todos:
-            writer.writerow(
-                [user_id, username, task.get("completed"), task.get("title")])
+    with open("{}.json".format(user_id), "w") as f:
+        json.dump({user_id: [{
+            "task": task.get("title"),
+            "completed": task.get("completed"),
+            "username": username
+        } for task in todos]}, f)
